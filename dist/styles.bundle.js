@@ -1,13 +1,13 @@
 webpackJsonp(["styles"],{
 
-/***/ "./node_modules/_raw-loader@0.5.1@raw-loader/index.js!./node_modules/_postcss-loader@2.1.5@postcss-loader/lib/index.js??embedded!./src/styles.css":
+/***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\r\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n"
 
 /***/ }),
 
-/***/ "./node_modules/_style-loader@0.19.1@style-loader/lib/addStyles.js":
+/***/ "./node_modules/style-loader/lib/addStyles.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -63,7 +63,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__("./node_modules/_style-loader@0.19.1@style-loader/lib/urls.js");
+var	fixUrls = __webpack_require__("./node_modules/style-loader/lib/urls.js");
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -380,7 +380,7 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 
-/***/ "./node_modules/_style-loader@0.19.1@style-loader/lib/urls.js":
+/***/ "./node_modules/style-loader/lib/urls.js":
 /***/ (function(module, exports) {
 
 
@@ -482,7 +482,7 @@ module.exports = function (css) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__("./node_modules/_raw-loader@0.5.1@raw-loader/index.js!./node_modules/_postcss-loader@2.1.5@postcss-loader/lib/index.js??embedded!./src/styles.css");
+var content = __webpack_require__("./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css");
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -490,14 +490,14 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__("./node_modules/_style-loader@0.19.1@style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__("./node_modules/style-loader/lib/addStyles.js")(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/_raw-loader@0.5.1@raw-loader/index.js!../node_modules/_postcss-loader@2.1.5@postcss-loader/lib/index.js??embedded!./styles.css", function() {
-			var newContent = require("!!../node_modules/_raw-loader@0.5.1@raw-loader/index.js!../node_modules/_postcss-loader@2.1.5@postcss-loader/lib/index.js??embedded!./styles.css");
+		module.hot.accept("!!../node_modules/raw-loader/index.js!../node_modules/postcss-loader/lib/index.js??embedded!./styles.css", function() {
+			var newContent = require("!!../node_modules/raw-loader/index.js!../node_modules/postcss-loader/lib/index.js??embedded!./styles.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

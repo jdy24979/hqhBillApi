@@ -57,4 +57,27 @@ serve.use('/api/billTotal/add',function(req,res){
     })
 })
 
+serve.use('/api/billList/List',function(req,res){
+    var queryStr = 'SELECT * FROM `bill_list` WHERE `name` LIKE \'%'
+                    + req.body.name + 
+                    '%\' AND (' 
+                    + ( req.body.status == null ? null :"'"+req.body.status+"'" ) + 
+                    " is null  or  status = '" 
+                    + req.body.status +
+                    "') AND `tel` LIKE \'%"
+                    + req.body.tel +
+                    "%' AND `desc` LIKE '%"
+                    + req.body.desc +
+                    "%';";
+    console.log(queryStr)
+    db.query(queryStr,(err,data)=>{
+        if(err){
+            res.send({errCode:1})
+        }else{
+            res.send(data)
+        }
+        res.end();
+    })
+})
+
 serve.use(expressStatic('./dist'));
