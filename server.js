@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const expressStatic = require('express-static');
 const bodyParser = require('body-parser');
@@ -43,9 +45,9 @@ serve.use('/api/billTotal/select',function(req,res){
     // console.log(queryStr)
     db.query(queryStr,(err,data)=>{
         if(err){
-            res.send({errCode:1})
+            res.send({code:1})
         }else{
-            res.send(data)
+            res.send(data[0])
         }
         res.end();
     })
@@ -56,7 +58,7 @@ serve.use('/api/billTotal/add',function(req,res){
     let queryStr = 'INSERT INTO bill_t(name,type,settled,unsettled,total) VALUES (\''+
                         info.name + "','"+ info.type +"',0,0,0"
                     +')';
-    console.log(queryStr);
+    // console.log(queryStr);
     db.query(queryStr,(err,data)=>{
         if(err){
             res.send({code:1})
@@ -81,10 +83,10 @@ serve.use('/api/billList/List',function(req,res){
                     + req.body.status +
                     "') AND `tel` LIKE \'%"
                     + req.body.tel +
-                    "%' AND `desc` LIKE '%"
-                    + req.body.desc +
-                    "%';";
-    console.log(queryStr)
+                    "%' AND `description` LIKE '%"
+                    + req.body.description +
+                    "%' ORDER BY `id` DESC;";
+    // console.log(queryStr)
     db.query(queryStr,(err,data)=>{
         if(err){
             res.send({errCode:1})
@@ -105,7 +107,6 @@ serve.use('/api/billList/changeStatus',function(req,res){
             res.send({code:1});
             res.end();
         }else{
-            console.log(upDateTotalSql(faId))
             db.query(upDateTotalSql(faId),(err) => {
                 if(err){
                     res.send({code:2})
@@ -116,6 +117,62 @@ serve.use('/api/billList/changeStatus',function(req,res){
             })
         }
         
+    })
+})
+
+serve.use('/api/billList/add',function(req,res){
+    const details = req.body.detail;
+    let info = req.body.addInfo;
+    let queryStr = 'INSERT INTO bill_list(name,type,status,amount,tel,date,description,rela_t_id) VALUES (\''+
+                        info.name + "','"+ info.type +"','未结算','"+ info.amount +"','"+ info.tel +"','"+ new Date(info.date).Format("YYYY-M-d") +"','"+ info.description +"','"+ info.rela_t_id +"'"
+                    +')';
+    db.query(queryStr,(err)=>{
+        if(err){
+            res.send({code:1});
+            res.end();
+        }else{
+            db.query('SELECT * from bill_list where id ORDER BY id DESC LIMIT 1',(err,data) => {
+                if(err){
+                    res.send({code:3});
+                    res.end();
+                }else{
+                    let faId = data[0].id;
+                    let queryStr = "";
+                    for (let i = 0; i < details.length; i++) {
+                        const element = details[i];
+                        queryStr += 'INSERT INTO bill_detail(product_name,model_name,number,unit,rela_l_id) VALUES (\''+
+                                        element.product_name + "','"+ element.model_name +"','"+ element.number +"','"+ element.unit +"','"+ faId +"'"
+                                    +');';
+                    }
+                    // console.log(queryStr)
+                    db.query(queryStr,(err) =>{
+                        if (err) {
+                            res.send({code:2});
+                            res.end();
+                        }else{
+                            res.send({code:0});
+                            res.end();
+                        }
+                    })
+                }
+            })
+        }
+        
+    })
+})
+
+serve.use("/api/billDetail/list",function(req,res){
+    let faId = req.body.id;
+    let queryStr ="SELECT * FROM `bill_detail` WHERE `rela_l_id` = " + faId;
+    console.log(queryStr)
+    db.query(queryStr,(err,data) => {
+        if(err){
+            res.send({code:1})
+            res.end();
+        }else{
+            res.send({code:0,list:data})
+            res.end();
+        }
     })
 })
 

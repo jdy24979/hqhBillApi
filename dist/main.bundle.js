@@ -456,7 +456,7 @@ module.exports = "button{\r\n    float: right;\r\n    margin-left:10px;\r\n    m
 /***/ "./src/app/components/bill-add/bill-add.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form nz-form class=\"ant-advanced-search-form\">\r\n  <div nz-row [nzGutter]=\"40\">\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"addInfoName\">单位名称</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [disabled]=\"true\" [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.name\" name=\"addInfoName\" [nzPlaceHolder]=\"'请输入单位名称'\" [nzId]=\"addInfoName\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\">联系电话</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.tel\" name=\"addInfoTel\" [nzPlaceHolder]=\"'请输入联系电话'\" [nzId]=\"addInfoTel\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\">账单类型</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-select style=\"width: 120px;\" [disabled]=\"true\" [(ngModel)]=\"addInfo.type\" name=\"queryType\" [nzPlaceHolder]=\"'选择账单类型'\" nzAllowClear>\r\n            <nz-option [nzValue]=\"'销货单'\" [nzLabel]=\"'销货单'\"></nz-option>\r\n            <nz-option [nzValue]=\"'购货单'\" [nzLabel]=\"'购货单'\"></nz-option>\r\n          </nz-select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryAmount\">账单金额</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.amount\" name=\"addInfoAmount\" [nzPlaceHolder]=\"'请输入账单金额'\" [nzId]=\"addInfoAmount\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-row>\r\n      <div nz-col [nzSpan]=\"24\">\r\n        <button nz-button [nzType]=\"'primary'\" (click)=\"showModal()\" style=\"float: left;\">\r\n          新增商品\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</form>\r\n\r\n<!-- 模态框 -->\r\n<nz-modal [nzVisible]=\"isVisible\" [nzTitle]=\"'新增商品'\" [nzContent]=\"modalContent\" (nzOnCancel)=\"handleCancel($event)\" (nzOnOk)=\"handleOk($event)\">\r\n    <ng-template #modalContent>\r\n        <form nz-form>\r\n            <div nz-form-item nz-row>\r\n              <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                <label for=\"detailInfo.product_name\" nz-form-item-required>商品名</label>\r\n              </div>\r\n              <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.product_name\" name=\"detailInfoProductName\" [nzId]=\"'detailInfo.product_name'\"></nz-input>\r\n              </div>\r\n            </div>\r\n            <div nz-form-item nz-row>\r\n              <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                <label for=\"detailInfo.model_name\">规格</label>\r\n              </div>\r\n              <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.model_name\" name=\"detailInfoModelName\" [nzId]=\"'detailInfo.model_name'\"></nz-input>\r\n              </div>\r\n            </div>\r\n            <div nz-form-item nz-row>\r\n                <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                  <label for=\"detailInfo.number\" nz-form-item-required>数量</label>\r\n                </div>\r\n                <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                  <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.number\" name=\"detailInfoNumber\" [nzId]=\"'detailInfo.number'\"></nz-input>\r\n                </div>\r\n              </div>\r\n              <div nz-form-item nz-row>\r\n                  <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                    <label for=\"detailInfo.unit\" nz-form-item-required>单价</label>\r\n                  </div>\r\n                  <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                    <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.unit\" name=\"detailInfoUnit\" [nzId]=\"'detailInfo.unit'\"></nz-input>\r\n                  </div>\r\n                </div>\r\n          </form>\r\n    </ng-template>\r\n  </nz-modal>\r\n  <!-- 模态框END -->\r\n\r\n\r\n<div class=\"search-result-list\">\r\n  <nz-table #nzTable [nzDataSource]=\"data\" [nzPageSize]=\"10\" [nzShowFooter]=\"true\">\r\n    <thead nz-thead>\r\n      <tr>\r\n        <th nz-th><span>商品名</span></th>\r\n        <th nz-th><span>规格</span></th>\r\n        <th nz-th><span>数量</span></th>\r\n        <th nz-th><span>单价</span></th>\r\n        <th nz-th><span>总价</span></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody nz-tbody>\r\n      <tr nz-tbody-tr *ngFor=\"let data of data\">\r\n        <td nz-td>{{data.product_name}}</td>\r\n        <td nz-td>\r\n          {{data.model_name}}\r\n        </td>\r\n        <td nz-td>{{data.number}}</td>\r\n        <td nz-td>{{data.unit}}</td>\r\n        <td nz-td>\r\n           {{data.number * data.unit}}\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n    <span nz-table-footer>货款总额: {{ goodsAmount }}</span>\r\n  </nz-table>\r\n</div>\r\n"
+module.exports = "<form nz-form class=\"ant-advanced-search-form\">\r\n  <div nz-row [nzGutter]=\"40\">\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"addInfoName\" nz-form-item-required>单位名称</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [disabled]=\"true\" [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.name\" name=\"addInfoName\" [nzPlaceHolder]=\"'请输入单位名称'\" [nzId]=\"addInfoName\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\" nz-form-item-required>联系电话</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.tel\" name=\"addInfoTel\" [nzPlaceHolder]=\"'请输入联系电话'\" [nzId]=\"addInfoTel\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\" nz-form-item-required>账单类型</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-select style=\"width: 120px;\" [disabled]=\"true\" [(ngModel)]=\"addInfo.type\" name=\"queryType\" [nzPlaceHolder]=\"'选择账单类型'\" nzAllowClear>\r\n            <nz-option [nzValue]=\"'销货单'\" [nzLabel]=\"'销货单'\"></nz-option>\r\n            <nz-option [nzValue]=\"'购货单'\" [nzLabel]=\"'购货单'\"></nz-option>\r\n          </nz-select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryAmount\" nz-form-item-required>账单金额</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"addInfo.amount\" name=\"addInfoAmount\" [nzPlaceHolder]=\"'请输入账单金额'\" [nzId]=\"addInfoAmount\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div nz-row>\r\n      <div nz-col [nzSpan]=\"24\">\r\n        <button nz-button [nzType]=\"'primary'\" (click)=\"showModal()\" style=\"float: left;\">\r\n          新增商品\r\n        </button>\r\n        <button nz-button [nzType]=\"'primary'\" (click)=\"showConfirm()\"  [disabled]=\"!_allChecked && !_indeterminate\" style=\"float: left;\">\r\n          删除商品\r\n        </button>\r\n      </div>\r\n    </div>\r\n</form>\r\n\r\n<!-- 模态框 -->\r\n<nz-modal [nzVisible]=\"isVisible\" [nzTitle]=\"'新增商品'\" [nzContent]=\"modalContent\" (nzOnCancel)=\"handleCancel($event)\" (nzOnOk)=\"handleOk($event)\">\r\n    <ng-template #modalContent>\r\n        <form nz-form>\r\n            <div nz-form-item nz-row>\r\n              <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                <label for=\"detailInfo.product_name\" nz-form-item-required>商品名</label>\r\n              </div>\r\n              <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.product_name\" name=\"detailInfoProductName\" [nzId]=\"'detailInfo.product_name'\"></nz-input>\r\n              </div>\r\n            </div>\r\n            <div nz-form-item nz-row>\r\n              <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                <label for=\"detailInfo.model_name\">规格</label>\r\n              </div>\r\n              <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.model_name\" name=\"detailInfoModelName\" [nzId]=\"'detailInfo.model_name'\"></nz-input>\r\n              </div>\r\n            </div>\r\n            <div nz-form-item nz-row>\r\n                <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                  <label for=\"detailInfo.number\" nz-form-item-required>数量</label>\r\n                </div>\r\n                <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                  <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.number\" name=\"detailInfoNumber\" [nzId]=\"'detailInfo.number'\"></nz-input>\r\n                </div>\r\n              </div>\r\n              <div nz-form-item nz-row>\r\n                  <div nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\">\r\n                    <label for=\"detailInfo.unit\" nz-form-item-required>单价</label>\r\n                  </div>\r\n                  <div nz-form-control nz-col [nzSm]=\"14\" [nzXs]=\"24\" nzHasFeedback>\r\n                    <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"detailInfo.unit\" name=\"detailInfoUnit\" [nzId]=\"'detailInfo.unit'\"></nz-input>\r\n                  </div>\r\n                </div>\r\n          </form>\r\n    </ng-template>\r\n  </nz-modal>\r\n  <!-- 模态框END -->\r\n\r\n\r\n<div class=\"search-result-list\">\r\n  <nz-table #nzTable [nzDataSource]=\"data\" [nzPageSize]=\"10\" [nzShowFooter]=\"true\">\r\n    <thead nz-thead>\r\n      <tr>\r\n        <th nz-th nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"_allChecked\" [nzIndeterminate]=\"_indeterminate\" (ngModelChange)=\"_checkAll($event)\">\r\n          </label>\r\n        </th>\r\n        <th nz-th><span>商品名</span></th>\r\n        <th nz-th><span>规格</span></th>\r\n        <th nz-th><span>数量</span></th>\r\n        <th nz-th><span>单价</span></th>\r\n        <th nz-th><span>总价</span></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody nz-tbody>\r\n      <tr nz-tbody-tr *ngFor=\"let data of data\">\r\n        <td nz-td nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"data.checked\" (ngModelChange)=\"_refreshStatus($event)\">\r\n          </label>\r\n        </td>\r\n        <td nz-td>{{data.product_name}}</td>\r\n        <td nz-td>\r\n          {{data.model_name}}\r\n        </td>\r\n        <td nz-td>{{data.number}}</td>\r\n        <td nz-td>{{data.unit}}</td>\r\n        <td nz-td>\r\n           {{data.number * data.unit}}\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n    <span nz-table-footer>货款总额: {{ goodsAmount }}</span>\r\n  </nz-table>\r\n</div>\r\n<div nz-row>\r\n  <div nz-col [nzSpan]=\"24\">\r\n    <button nz-button [nzType]=\"'primary'\" (click)=\"submit()\">新增</button>\r\n    <button nz-button [nzType]=\"'primary'\" [routerLink]=\"['/list']\" style=\"display: none\" id=\"goBack\">新增</button>\r\n    <button nz-button [routerLink]=\"['/list']\">返回</button>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -482,11 +482,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var BillAddComponent = /** @class */ (function () {
-    function BillAddComponent(PageInfoService, http, _message) {
+    function BillAddComponent(PageInfoService, http, modalService, _message) {
         var _this = this;
         this.PageInfoService = PageInfoService;
         this.http = http;
+        this.modalService = modalService;
         this._message = _message;
         this.addInfo = {
             name: "",
@@ -494,9 +496,8 @@ var BillAddComponent = /** @class */ (function () {
             tel: "",
             rela_t_id: this.PageInfoService.curTotalId,
             date: +new Date(),
-            desc: "",
-            amount: null,
-            detailList: []
+            description: "",
+            amount: null
         };
         this.data = [];
         this.goodsAmount = 0;
@@ -515,13 +516,40 @@ var BillAddComponent = /** @class */ (function () {
                 rela_l_id: _this.faId
             });
             _this.createMessage('success', '新增成功');
-            console.log(_this.data);
+            _this.getGoodsAmount();
             _this.detailInfo = {
                 product_name: "",
                 model_name: "",
                 number: null,
                 unit: null
             };
+        };
+        //confirm 确认删除
+        this._allChecked = false;
+        this._indeterminate = false;
+        this.showConfirm = function () {
+            var selecteds = [];
+            var str = "";
+            for (var i = 0; i < _this.data.length; i++) {
+                if (_this.data[i].checked) {
+                    selecteds.push(i);
+                    str += _this.data[i].product_name + ",";
+                }
+            }
+            var that = _this;
+            _this.modalService.confirm({
+                title: '是否确认删除',
+                content: '<b>商品:' + str + '</b>',
+                onOk: function () {
+                    for (var i = 0; i < selecteds.length; i++) {
+                        var element = selecteds[i];
+                        that.data.splice(element - i, 1);
+                    }
+                    that._refreshStatus();
+                },
+                onCancel: function () {
+                }
+            });
         };
         this.createMessage = function (type, msg) {
             _this._message.create(type, msg);
@@ -549,17 +577,52 @@ var BillAddComponent = /** @class */ (function () {
         var that = this;
         this.http.post('./api/billTotal/select', { id: this.PageInfoService.curTotalId })
             .subscribe(function (res) {
-            console.log(_this);
-            that.addInfo = {
-                name: res['name'],
-                type: res['type'],
-                tel: "",
-                rela_t_id: _this.PageInfoService.curTotalId,
-                date: +new Date(),
-                desc: "",
-                amount: null,
-                detailList: []
-            };
+            _this.addInfo.name = res['name'];
+            _this.addInfo.type = res['type'];
+            _this.addInfo.rela_t_id = _this.PageInfoService.curTotalId;
+            _this.addInfo.date = +new Date();
+        });
+    };
+    BillAddComponent.prototype._refreshStatus = function () {
+        var allChecked = this.data.length == 0 ? false : this.data.every(function (value) { return value.checked === true; });
+        var allUnChecked = this.data.length == 0 ? true : this.data.every(function (value) { return !value.checked; });
+        this._allChecked = allChecked;
+        this._indeterminate = (!allChecked) && (!allUnChecked);
+    };
+    BillAddComponent.prototype._checkAll = function (value) {
+        if (value) {
+            this.data.forEach(function (data) {
+                data.checked = true;
+            });
+        }
+        else {
+            this.data.forEach(function (data) {
+                data.checked = false;
+            });
+        }
+        this._refreshStatus();
+    };
+    BillAddComponent.prototype.getGoodsAmount = function () {
+        var $amount = 0;
+        for (var i in this.data) {
+            $amount += this.data[i].number * this.data[i].unit;
+        }
+        this.goodsAmount = $amount;
+    };
+    BillAddComponent.prototype.submit = function () {
+        var desc = "";
+        for (var i = 0; i < this.data.length; i++) {
+            var element = this.data[i];
+            desc += element.product_name + "_" + element.model_name;
+        }
+        this.addInfo.description = desc;
+        this.http.post("./api/billList/add", {
+            addInfo: this.addInfo,
+            detail: this.data
+        }).subscribe(function (res) {
+            if (res['code'] == 0) {
+                document.getElementById('goBack').click();
+            }
         });
     };
     BillAddComponent = __decorate([
@@ -568,7 +631,7 @@ var BillAddComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/components/bill-add/bill-add.component.html"),
             styles: [__webpack_require__("./src/app/components/bill-add/bill-add.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_page_info_service__["a" /* PageInfoService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3_ng_zorro_antd__["b" /* NzMessageService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_page_info_service__["a" /* PageInfoService */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3_ng_zorro_antd__["c" /* NzModalService */], __WEBPACK_IMPORTED_MODULE_3_ng_zorro_antd__["b" /* NzMessageService */]])
     ], BillAddComponent);
     return BillAddComponent;
 }());
@@ -587,7 +650,7 @@ module.exports = "button{\r\n    float: right;\r\n    margin-left:10px;\r\n    m
 /***/ "./src/app/components/bill-list/bill-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form nz-form class=\"ant-advanced-search-form\">\r\n  <div nz-row [nzGutter]=\"40\">\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryName\">单位名称</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.name\" name=\"queryName\" [nzPlaceHolder]=\"'请输入单位名称'\" [nzId]=\"queryName\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\">联系电话</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.tel\" name=\"queryTel\" [nzPlaceHolder]=\"'请输入联系电话'\" [nzId]=\"queryTel\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryDesc\">详情</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.desc\" name=\"queryDesc\" [nzPlaceHolder]=\"'请输入详情'\" [nzId]=\"queryDesc\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label>状态</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-select style=\"width: 120px;\" [(ngModel)]=\"query.type\" name=\"queryType\" [nzPlaceHolder]=\"'选择账单状态'\" nzAllowClear>\r\n            <nz-option [nzValue]=\"'已结算'\" [nzLabel]=\"'已结算'\"></nz-option>\r\n            <nz-option [nzValue]=\"'未结算'\" [nzLabel]=\"'未结算'\"></nz-option>\r\n          </nz-select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div nz-row>\r\n    <div nz-col [nzSpan]=\"24\">\r\n      <button nz-button [nzType]=\"'primary'\" (click)=\"getData()\">搜索</button>\r\n      <button nz-button (click)=\"resetForm()\">清空</button>\r\n      <button nz-button [nzType]=\"'primary'\" [routerLink]=\"['/add']\" style=\"float: left;\">\r\n        新建账单\r\n      </button>\r\n      <button nz-button [nzType]=\"'primary'\" (click)=\"showConfirm()\" [disabled]=\"!_allChecked && !_indeterminate\"  style=\"float: left;\">\r\n        账单结算\r\n      </button>\r\n    </div>\r\n  </div>\r\n</form>\r\n<div class=\"search-result-list\">\r\n  <nz-table #nzTable [nzDataSource]=\"data\" [nzPageSize]=\"10\">\r\n    <thead nz-thead>\r\n      <tr>\r\n        <th nz-th nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"_allChecked\" [nzIndeterminate]=\"_indeterminate\" (ngModelChange)=\"_checkAll($event)\">\r\n          </label>\r\n        </th>\r\n        <th nz-th><span>创建日期</span></th>\r\n        <th nz-th><span>单位名称</span></th>\r\n        <th nz-th><span>详情</span></th>\r\n        <th nz-th><span>金额</span></th>\r\n        <th nz-th><span>状态</span></th>\r\n        <th nz-th><span>类型</span></th>\r\n        <th nz-th><span>结算日期</span></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody nz-tbody>\r\n      <tr nz-tbody-tr *ngFor=\"let data of nzTable.data\">\r\n        <td nz-td nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"data.checked\" [disabled]=\"data.status == '已结算'\" (ngModelChange)=\"_refreshStatus($event)\">\r\n          </label>\r\n        </td>\r\n        <td nz-td>{{data.date | date:'yyyy-MM-dd'}}</td>\r\n        <td nz-td>\r\n          <a (click)=\"setPageInfo(data.id)\" [routerLink]=\"['/detail']\">{{data.name}}</a>\r\n        </td>\r\n        <td nz-td>{{data.desc}}</td>\r\n        <td nz-td>{{data.amount}}</td>\r\n        <td nz-td>\r\n           {{data.status}}\r\n        </td>\r\n        <td nz-td>\r\n          {{data.type}}\r\n       </td>\r\n       <td nz-td>\r\n          {{data.settle_date | date:'yyyy-MM-dd'}}\r\n       </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n"
+module.exports = "<form nz-form class=\"ant-advanced-search-form\">\r\n  <div nz-row [nzGutter]=\"40\">\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryName\">单位名称</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.name\" name=\"queryName\" [nzPlaceHolder]=\"'请输入单位名称'\" [nzId]=\"queryName\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryTel\">联系电话</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.tel\" name=\"queryTel\" [nzPlaceHolder]=\"'请输入联系电话'\" [nzId]=\"queryTel\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label [attr.for]=\"queryDesc\">详情</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-input [nzSize]=\"'large'\" [(ngModel)]=\"query.desc\" name=\"queryDesc\" [nzPlaceHolder]=\"'请输入详情'\" [nzId]=\"queryDesc\"></nz-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div nz-col [nzSpan]=\"8\">\r\n      <div nz-form-item nz-row>\r\n        <div nz-form-label nz-col [nzSpan]=\"5\">\r\n          <label>状态</label>\r\n        </div>\r\n        <div nz-form-control nz-col [nzSpan]=\"19\">\r\n          <nz-select style=\"width: 120px;\" [(ngModel)]=\"query.type\" name=\"queryType\" [nzPlaceHolder]=\"'选择账单状态'\" nzAllowClear>\r\n            <nz-option [nzValue]=\"'已结算'\" [nzLabel]=\"'已结算'\"></nz-option>\r\n            <nz-option [nzValue]=\"'未结算'\" [nzLabel]=\"'未结算'\"></nz-option>\r\n          </nz-select>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div nz-row>\r\n    <div nz-col [nzSpan]=\"24\">\r\n      <button nz-button [nzType]=\"'primary'\" (click)=\"getData()\">搜索</button>\r\n      <button nz-button (click)=\"resetForm()\">清空</button>\r\n      <button nz-button [nzType]=\"'primary'\" [routerLink]=\"['/add']\" style=\"float: left;\">\r\n        新建账单\r\n      </button>\r\n      <button nz-button [nzType]=\"'primary'\" (click)=\"showConfirm()\" [disabled]=\"!_allChecked && !_indeterminate\"  style=\"float: left;\">\r\n        账单结算\r\n      </button>\r\n    </div>\r\n  </div>\r\n</form>\r\n<div class=\"search-result-list\">\r\n  <nz-table #nzTable [nzDataSource]=\"data\" [nzPageSize]=\"10\">\r\n    <thead nz-thead>\r\n      <tr>\r\n        <th nz-th nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"_allChecked\" [nzIndeterminate]=\"_indeterminate\" (ngModelChange)=\"_checkAll($event)\">\r\n          </label>\r\n        </th>\r\n        <th nz-th><span>创建日期</span></th>\r\n        <th nz-th><span>单位名称</span></th>\r\n        <th nz-th><span>详情</span></th>\r\n        <th nz-th><span>金额</span></th>\r\n        <th nz-th><span>状态</span></th>\r\n        <th nz-th><span>类型</span></th>\r\n        <th nz-th><span>结算日期</span></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody nz-tbody>\r\n      <tr nz-tbody-tr *ngFor=\"let data of nzTable.data\">\r\n        <td nz-td nzCheckbox>\r\n          <label nz-checkbox [(ngModel)]=\"data.checked\" [disabled]=\"data.status == '已结算'\" (ngModelChange)=\"_refreshStatus($event)\">\r\n          </label>\r\n        </td>\r\n        <td nz-td>{{data.date | date:'yyyy-MM-dd'}}</td>\r\n        <td nz-td>\r\n          <a (click)=\"setPageInfo(data.id)\" [routerLink]=\"['/detail']\">{{data.name}}</a>\r\n        </td>\r\n        <td nz-td>{{data.description}}</td>\r\n        <td nz-td>{{data.amount}}</td>\r\n        <td nz-td>\r\n           {{data.status}}\r\n        </td>\r\n        <td nz-td>\r\n          {{data.type}}\r\n       </td>\r\n       <td nz-td>\r\n          {{data.settle_date | date:'yyyy-MM-dd'}}\r\n       </td>\r\n      </tr>\r\n    </tbody>\r\n  </nz-table>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -666,7 +729,7 @@ var BillListComponent = /** @class */ (function () {
         this.query = {
             rela_t_id: this.faId,
             name: "",
-            desc: "",
+            description: "",
             dateFrom: null,
             dateTo: null,
             tel: "",
@@ -677,7 +740,7 @@ var BillListComponent = /** @class */ (function () {
         this.query = {
             rela_t_id: this.faId,
             name: "",
-            desc: "",
+            description: "",
             dateFrom: null,
             dateTo: null,
             tel: "",
@@ -861,7 +924,7 @@ module.exports = ""
 /***/ "./src/app/components/detail/detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  detail works!\r\n</p>\r\n"
+module.exports = "  <div class=\"search-result-list\">\r\n    <nz-table #nzTable [nzDataSource]=\"data\" [nzPageSize]=\"10\" [nzShowFooter]=\"true\">\r\n      <thead nz-thead>\r\n        <tr>\r\n          <th nz-th><span>商品名</span></th>\r\n          <th nz-th><span>规格</span></th>\r\n          <th nz-th><span>数量</span></th>\r\n          <th nz-th><span>单价</span></th>\r\n          <th nz-th><span>总价</span></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody nz-tbody>\r\n        <tr nz-tbody-tr *ngFor=\"let data of data\">\r\n          <td nz-td>{{data.product_name}}</td>\r\n          <td nz-td>\r\n            {{data.model_name}}\r\n          </td>\r\n          <td nz-td>{{data.number}}</td>\r\n          <td nz-td>{{data.unit}}</td>\r\n          <td nz-td>\r\n             {{data.number * data.unit}}\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n      <span nz-table-footer>货款总额: {{ goodsAmount }}</span>\r\n    </nz-table>\r\n  </div>\r\n  <div nz-row>\r\n    <div nz-col [nzSpan]=\"24\">\r\n      <button nz-button [routerLink]=\"['/list']\">返回</button>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -871,6 +934,8 @@ module.exports = "<p>\r\n  detail works!\r\n</p>\r\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/_@angular_core@5.2.10@@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/_@angular_common@5.2.10@@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_page_info_service__ = __webpack_require__("./src/app/services/page-info.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -881,10 +946,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DetailComponent = /** @class */ (function () {
-    function DetailComponent() {
+    function DetailComponent(http, PageInfoService) {
+        this.http = http;
+        this.PageInfoService = PageInfoService;
+        this.data = [];
     }
     DetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.faId = this.PageInfoService.curListId;
+        this.http.post("./api/billDetail/list", { id: this.faId })
+            .subscribe(function (res) {
+            if (res['code'] == 0) {
+                _this.data = res['list'];
+            }
+        });
     };
     DetailComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -892,7 +970,7 @@ var DetailComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/components/detail/detail.component.html"),
             styles: [__webpack_require__("./src/app/components/detail/detail.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__services_page_info_service__["a" /* PageInfoService */]])
     ], DetailComponent);
     return DetailComponent;
 }());
