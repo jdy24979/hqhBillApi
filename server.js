@@ -86,7 +86,7 @@ serve.use('/api/billList/List',function(req,res){
                     "%' AND `description` LIKE '%"
                     + req.body.description +
                     "%' ORDER BY `id` DESC;";
-    // console.log(queryStr)
+     console.log(queryStr)
     db.query(queryStr,(err,data)=>{
         if(err){
             res.send({errCode:1})
