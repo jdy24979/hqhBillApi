@@ -1,0 +1,10 @@
+diff a/server.js b/server.js	(rejected hunks)
+@@ -86,7 +86,7 @@
+                     "%' AND `description` LIKE '%"
+                     + req.body.description +
+                     "%' ORDER BY `id` DESC;";
+-    // console.log(queryStr)
++     console.log(queryStr)
+     db.query(queryStr,(err,data)=>{
+         if(err){
+             res.send({errCode:1})
