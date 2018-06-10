@@ -12,7 +12,7 @@ module.exports=function() {
     router.use("/list",function(req,res){
         let faId = req.body.id;
         let queryStr ="SELECT * FROM `bill_detail` WHERE `rela_l_id` = " + faId;
-        console.log(queryStr)
+        // console.log(queryStr)
         db.query(queryStr,(err,data) => {
             if(err){
                 res.send({code:1})
