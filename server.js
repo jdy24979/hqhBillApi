@@ -1,10 +1,9 @@
 ﻿const express = require('express');
 const expressStatic = require('express-static');
 const bodyParser = require('body-parser');
-const expressRoute = require('express-route');
 const compression = require('compression');
 const expressSession = require('express-session');
-const cookieParse = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 
 let serve = express();
@@ -13,7 +12,35 @@ serve.listen(8080);
 
 serve.use(compression())
 
+serve.use(cookieParser());
+
+serve.use(expressSession({
+    'resave':false,
+    'saveUninitialized': true,
+    'secret': 'ruidoc',    
+    'cookie': {
+        'maxAge': 90000
+    },
+    'name': 'session_id'   
+}));
+
 serve.use(bodyParser.json({}));
+
+serve.use('/login',function(req,res,next){
+    res.send("登录页面");
+    res.end();
+})
+
+serve.use('/',function(req,res,next){
+    if(!req.session.user && req.url != '/login'){
+        res.redirect("/login");
+    }else{
+        if(req.url == "/"){
+            return res.sendFile(__dirname+'/dist/index.html');
+        }
+    }
+    next();
+})
 
 serve.use('/api/menu', require('./api/menu/menu')());
 
