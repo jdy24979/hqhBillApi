@@ -32,13 +32,13 @@ serve.use('/login',function(req,res,next){
 })
 
 serve.use('/',function(req,res,next){
-    if(!req.session.user && req.url != '/login'){
-        res.redirect("/login");
-    }else{
-        if(req.url == "/"){
+    // if(!req.session.user && req.url != '/login'){
+    //     res.redirect("/login");
+    // }else{
+        if(req.url == "/" || req.url.indexOf('/api/') == -1){
             return res.sendFile(__dirname+'/dist/index.html');
         }
-    }
+    // }
     next();
 })
 
