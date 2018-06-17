@@ -3,6 +3,8 @@ const expressStatic = require('express-static');
 const bodyParser = require('body-parser');
 const expressRoute = require('express-route');
 const compression = require('compression');
+const expressSession = require('express-session');
+const cookieParse = require('cookie-parser');
 
 
 let serve = express();

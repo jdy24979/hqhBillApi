@@ -1,0 +1,30 @@
+{
+  "name": "hqhbillapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdy24979/hqhBillApi.git"
+  },
+  "author": "jdy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdy24979/hqhBillApi/issues"
+  },
+  "homepage": "https://github.com/jdy24979/hqhBillApi#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-route": "^0.1.4",
+    "express-session": "^1.15.6",
+    "express-static": "^1.2.5",
+    "mysql": "^2.15.0"
+  }
+}
