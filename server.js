@@ -26,29 +26,33 @@ serve.use(expressSession({
 
 serve.use(bodyParser.json({}));
 
-serve.use('/login',function(req,res,next){
+serve.use('/api/login',function(req,res,next){
     res.send("登录页面");
     res.end();
 })
 
 serve.use('/',function(req,res,next){
     // if(!req.session.user && req.url != '/login'){
-    //     res.redirect("/login");
+    //    return  res.redirect("/api/login");
     // }else{
-        if(req.url == "/" || req.url.indexOf('/api/') == -1){
+        if( req.url.indexOf('/home/') != -1){
+            return res.redirect('/');
+        }
+        if(req.url == "/"){
             return res.sendFile(__dirname+'/dist/index.html');
         }
+        
     // }
     next();
 })
+
+serve.use('/api/login', require('./api/login/login')());
 
 serve.use('/api/menu', require('./api/menu/menu')());
 
 serve.use('/api/billTotal', require('./api/bill/total')());
 
-
 serve.use('/api/billList', require('./api/bill/list')());
-
 
 serve.use('/api/billDetail', require('./api/bill/detail')());
 
