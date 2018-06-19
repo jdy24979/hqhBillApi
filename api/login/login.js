@@ -6,22 +6,35 @@ let db = mysql.createConnection({
     password: '$$pass1234',
     database: 'hqhdb'
 });
-module.exports=function() {
+module.exports = function () {
     var router = express.Router();
 
-    router.use("/login",function(req,res){
+    router.use("", function (req, res) {
+        console.log(req.body)
         let username = req.body.username;
         let password = req.body.password;
-        let queryStr ="SELECT * FROM `user` WHERE `user` = " + username;
-        // console.log(queryStr)
-        db.query(queryStr,(err,data) => {
-            if(err){
-                res.send({code:1})
-                res.end();
-            }else{
-                console.log(data);
-                res.send({code:0,list:data})
-                res.end();
+        let queryStr = "SELECT * FROM `user` WHERE `user` = '" + username + "'";
+        console.log(queryStr)
+        db.query(queryStr, (err, data) => {
+            if (err) {
+                res.send({ code: 1 }).end();
+            } else {
+                if (data.length == 0) {
+                    res.send({ code: 2, msg: '用户名不存在' }).end();
+                } else {
+                    if (data[0].password == password) {
+                        req.session.user = data[0].id;
+                        res.send({
+                            code: 0,
+                            username: data[0].user,
+                            userId: data[0].id,
+                            msg: "登录成功"
+                        }).end()
+                    } else {
+                        res.send({ code: 2, msg: '密码错误' }).end();
+                    }
+                }
+
             }
         })
     })

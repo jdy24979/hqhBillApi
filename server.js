@@ -15,35 +15,34 @@ serve.use(compression())
 serve.use(cookieParser());
 
 serve.use(expressSession({
-    'resave':false,
+    'resave': false,
     'saveUninitialized': true,
-    'secret': 'ruidoc',    
+    'secret': 'ruidoc',
     'cookie': {
         'maxAge': 90000
     },
-    'name': 'session_id'   
+    'name': 'session_id'
 }));
 
 serve.use(bodyParser.json({}));
 
-serve.use('/api/login',function(req,res,next){
-    res.send("登录页面");
-    res.end();
-})
-
-serve.use('/',function(req,res,next){
-    // if(!req.session.user && req.url != '/login'){
-    //    return  res.redirect("/api/login");
-    // }else{
-        if( req.url.indexOf('/home/') != -1){
+serve.use('/', function (req, res, next) {
+    if (!req.session.user && req.url.indexOf('/login') == -1 && req.url.indexOf('/static') == -1) {
+        return res.sendFile(__dirname + '/dist/login/index.html');
+    } else {
+        if (req.url.indexOf('/home/') != -1 && req.url == "/index") {
             return res.redirect('/');
         }
-        if(req.url == "/"){
-            return res.sendFile(__dirname+'/dist/index.html');
+        if (req.url == "/") {
+            return res.sendFile(__dirname + '/dist/index.html');
         }
-        
-    // }
+
+    }
     next();
+})
+
+serve.use('/login',function(req,res){
+    return res.sendFile(__dirname + '/dist/login/index.html');
 })
 
 serve.use('/api/login', require('./api/login/login')());
@@ -56,8 +55,7 @@ serve.use('/api/billList', require('./api/bill/list')());
 
 serve.use('/api/billDetail', require('./api/bill/detail')());
 
+serve.use('/static' ,expressStatic('./dist'));
 
 
 
-
-serve.use(expressStatic('./dist'));

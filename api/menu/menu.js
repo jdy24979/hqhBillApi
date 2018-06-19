@@ -10,14 +10,13 @@ module.exports=function() {
     var router = express.Router();
 
     router.use("/list",function(req,res){
-        let queryStr ="SELECT *,sub_menu.name as sub_name,sub_menu.id as sub_id,sub_menu.nameEn as sub_nameEn FROM `sub_menu` left join `menu` on sub_menu.rela_id = menu.id";
+        let queryStr ="SELECT *,menu_submenu.name as sub_name,menu_submenu.id as sub_id,menu_submenu.nameEn as sub_nameEn FROM `menu_submenu` left join `menu` on menu_submenu.rela_id = menu.id";
         // console.log(queryStr)
         db.query(queryStr,(err,data) => {
             if(err){
                 res.send({code:1})
                 res.end();
             }else{
-                let menuData = [];
                 let menus = [];
                 let ids = [];
                 for (let i = 0; i < data.length; i++) {
