@@ -10,11 +10,11 @@ module.exports = function () {
     var router = express.Router();
 
     router.use("", function (req, res) {
-        console.log(req.body)
+        // console.log(req.body)
         let username = req.body.username;
         let password = req.body.password;
         let queryStr = "SELECT * FROM `user` WHERE `user` = '" + username + "'";
-        console.log(queryStr)
+        // console.log(queryStr)
         db.query(queryStr, (err, data) => {
             if (err) {
                 res.send({ code: 1 }).end();

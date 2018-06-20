@@ -28,7 +28,7 @@ serve.use(bodyParser.json({}));
 
 serve.use('/', function (req, res, next) {
     if (!req.session.user && req.url.indexOf('/login') == -1 && req.url.indexOf('/static') == -1) {
-        return res.sendFile(__dirname + '/dist/login/index.html');
+        return res.redirect('/login');
     } else {
         if (req.url.indexOf('/home/') != -1 && req.url == "/index") {
             return res.redirect('/');
@@ -54,6 +54,8 @@ serve.use('/api/billTotal', require('./api/bill/total')());
 serve.use('/api/billList', require('./api/bill/list')());
 
 serve.use('/api/billDetail', require('./api/bill/detail')());
+
+serve.use('/api/product', require('./api/product/product')());
 
 serve.use('/static' ,expressStatic('./dist'));
 
