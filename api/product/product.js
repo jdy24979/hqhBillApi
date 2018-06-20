@@ -4,7 +4,8 @@ let db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '$$pass1234',
-    database: 'hqhdb'
+    database: 'hqhdb',
+    multipleStatements:true
 });
 module.exports=function() {
     var router = express.Router();
@@ -43,6 +44,31 @@ module.exports=function() {
                         }
                     })
                 }
+            }
+        }) 
+    })
+
+    router.use("/productDelete",function(req,res){
+        let ids = String(req.body.ids);
+        let queryStr ='DELETE FROM `pv_product` WHERE `id` in ('+ ids +') ; DELETE FROM `pv_model` WHERE `product_id` in (' + ids + ') ; DELETE FROM `pv_spec` WHERE `product_id` in (' + ids + ');';
+        db.query(queryStr,(err,data)=> {
+            if(err){
+                return res.send({code:1}).end();
+            }else{
+                return res.send({code:0,msg:"删除成功"}).end();
+            }
+        }) 
+    })
+
+    router.use("/productPut",function(req,res){
+        let info = req.body;
+        // let queryStr ='UPDATE pv_product SET `name` = '+ 
+        // info. + ';
+        db.query(queryStr,(err,data)=> {
+            if(err){
+                return res.send({code:1}).end();
+            }else{
+                return res.send({code:0,msg:"删除成功"}).end();
             }
         }) 
     })
