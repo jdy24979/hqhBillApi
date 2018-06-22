@@ -62,13 +62,12 @@ module.exports=function() {
 
     router.use("/productPut",function(req,res){
         let info = req.body;
-        // let queryStr ='UPDATE pv_product SET `name` = '+ 
-        // info. + ';
+        let queryStr ="UPDATE `pv_product` SET `name` = '"+ info.name + "',`order` = '"+ info.order +"' WHERE `id` = "+ info.id;
         db.query(queryStr,(err,data)=> {
             if(err){
                 return res.send({code:1}).end();
             }else{
-                return res.send({code:0,msg:"删除成功"}).end();
+                return res.send({code:0,msg:"修改成功"}).end();
             }
         }) 
     })
