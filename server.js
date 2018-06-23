@@ -57,6 +57,8 @@ serve.use('/api/billDetail', require('./api/bill/detail')());
 
 serve.use('/api/product', require('./api/product/product')());
 
+serve.use('/api/model', require('./api/product/model')());
+
 serve.use('/static' ,expressStatic('./dist'));
 
 
