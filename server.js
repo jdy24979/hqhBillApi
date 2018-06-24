@@ -59,6 +59,10 @@ serve.use('/api/product', require('./api/product/product')());
 
 serve.use('/api/model', require('./api/product/model')());
 
+serve.use('/api/spec', require('./api/product/spec')());
+
+serve.use('/api/storehouse', require('./api/storehouse/storehouse')());
+
 serve.use('/static' ,expressStatic('./dist'));
 
 
