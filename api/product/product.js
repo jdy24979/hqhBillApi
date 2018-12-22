@@ -10,6 +10,24 @@ let db = mysql.createConnection({
 module.exports=function() {
     var router = express.Router();
 
+    router.use("/productSelect",function(req,res){
+        let queryStr ="SELECT * FROM pv_product;";
+        // console.log(queryStr)
+        db.query(queryStr,(err,data) => {
+            if(err){
+                res.send({code:1})
+                res.end();
+            }else{
+                let resData = [];
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    resData.push({value:element.id,label:element.name})
+                }
+                res.send({code:0,list:resData}).end();
+            }
+        })
+    })
+
     router.use("/productList",function(req,res){
         let queryStr ="SELECT * FROM pv_product WHERE `name` LIKE '\%" + (req.body.name == null ? "" :req.body.name) + "\%' AND `order` LIKE '\%" + (req.body.order == null ? "" :req.body.order) + "\%'";
         // console.log(queryStr)

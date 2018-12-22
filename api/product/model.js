@@ -10,6 +10,25 @@ let db = mysql.createConnection({
 module.exports=function() {
     var router = express.Router();
 
+    router.use("/modelSelect",function(req,res){
+        let info = req.body;
+        let queryStr ="SELECT * FROM `model` WHERE `product_id` = " +info.productId;
+        // console.log(queryStr)
+        db.query(queryStr,(err,data) => {
+            if(err){
+                res.send({code:1})
+                res.end();
+            }else{
+                let resData = [];
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    resData.push({value:element.id,label:element.name})
+                }
+                res.send({code:0,list:resData}).end();
+            }
+        })
+    })
+
     router.use("/modelList",function(req,res){
         let info = req.body;
         let queryStr ="SELECT * FROM `model` WHERE `product_name` LIKE '%"+ info.productName +"%' AND `model_name` LIKE '%"+ info.modelName +"%' AND `order` LIKE '%"+ info.order +"%'";
